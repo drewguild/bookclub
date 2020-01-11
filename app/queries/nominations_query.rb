@@ -5,7 +5,11 @@ class NominationsQuery
         @relation = relation
     end
 
+    def all
+        Book.where(id: relation.pluck(:book_id))
+    end
+
     def for_club(club)
-        Book.where(relation.where(member_id: club.members).pluck(:book_id))
+        Book.where(id: relation.where(member_id: club.members.ids).pluck(:book_id))
     end
 end
