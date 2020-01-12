@@ -1,0 +1,5 @@
+<h1>Book Nominations</h1>
+
+<% @books.each do |book| %>
+    <li><%= "#{book.title} by #{book.author}" %></li>
+<% end %>
