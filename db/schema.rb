@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200109070605) do
+ActiveRecord::Schema.define(version: 20200112053414) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20200109070605) do
     t.integer "upvotes"
     t.integer "book_id"
     t.integer "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
