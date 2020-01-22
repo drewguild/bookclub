@@ -7,3 +7,5 @@
 <% @books.each do |book| %>
     <li><%= "#{book.title} by #{book.author}" %></li>
 <% end %>
+
+<%= link_to("Nominate a new book", new_nomination_path) %>
