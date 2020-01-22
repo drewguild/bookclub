@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    skip_before_action :require_login, only: [:create, :login]
+
     def login
         if current_user
             redirect_to nominations_url
