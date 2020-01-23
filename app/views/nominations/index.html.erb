@@ -1,5 +1,11 @@
+<%= form_with(url: "/sessions/#{session[:user_id]}", method: "delete") do %>
+    <% submit_tag("Logout") %>
+<% end %>
+
 <h1>Book Nominations</h1>
 
 <% @books.each do |book| %>
     <li><%= "#{book.title} by #{book.author}" %></li>
 <% end %>
+
+<%= link_to("Nominate a new book", new_nomination_path) %>
