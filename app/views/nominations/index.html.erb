@@ -5,7 +5,13 @@
 <h1>Book Nominations</h1>
 
 <% @books.each do |book| %>
-    <li><%= "#{book.title} by #{book.author}" %></li>
+    <li>
+        <span>
+            <span><%= book.upvotes %></span>
+            <img />
+        </span>
+        <span><%= "#{book.title} by #{book.author}" %></span>
+    </li>
 <% end %>
 
 <%= link_to("Nominate a new book", new_nomination_path) %>

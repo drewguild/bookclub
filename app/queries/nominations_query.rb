@@ -1,3 +1,5 @@
+require "nominated_book"
+
 class NominationsQuery
     attr_reader :relation
 
@@ -6,10 +8,10 @@ class NominationsQuery
     end
 
     def all
-        Book.where(id: relation.pluck(:book_id))
-    end
+        nominated_books = relation.map do |nomination|
+            NominatedBook.new(nomination, nomination.book)
+        end
 
-    def for_club(club)
-        Book.where(id: relation.where(member_id: club.members.ids).pluck(:book_id))
+        nominated_books
     end
 end
