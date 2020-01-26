@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
-  resources :nominations, only: [:new, :create, :index] do
+  resources :nominations, only: [:new, :create, :index, :update] do
 
   end
 end

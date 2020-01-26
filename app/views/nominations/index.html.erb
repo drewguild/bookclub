@@ -6,9 +6,11 @@
 
 <% @books.each do |book| %>
     <li>
-        <span>
+        <span class="upvotes-<%= book.nomination.id %>">
             <span><%= book.upvotes %></span>
-            <i class="lni-thumbs-up"></i>
+            <%= link_to(nomination_path(book.nomination.id), remote: true, method: :put) do %>
+                <i class="lni-thumbs-up"></i>
+            <% end %>
         </span>
         <span><%= "#{book.title} by #{book.author}" %></span>
     </li>
