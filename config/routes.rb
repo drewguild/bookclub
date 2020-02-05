@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
-  resources :nominations, only: [:new, :create, :index] do
-
+  resources :nominations, only: [:new, :create, :index, :update] do
+    member do
+      delete "/downvote" => "nominations#downvote", as: "downvote"
+    end
   end
 end
