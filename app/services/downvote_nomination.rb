@@ -1,4 +1,4 @@
-class UpvoteNomination
+class DownvoteNomination
     def initialize(nomination_id, member)
         @id = nomination_id
         @member = member
@@ -6,9 +6,9 @@ class UpvoteNomination
 
     def call
         nomination = Nomination.find(@id)
-        nomination.increment!(:upvotes)
+        nomination.decrement!(:upvotes)
 
-        Vote.create!(nomination_id: @id, member_id: @member.id)
+        Vote.find_by!(nomination_id: @id, member_id: @member.id).destroy!
 
         nomination.reload
     end
