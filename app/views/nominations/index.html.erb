@@ -4,16 +4,8 @@
 
 <h1>Book Nominations</h1>
 
-<% @books.each do |book| %>
-    <li>
-        <span class="upvotes-<%= book.nomination.id %>">
-            <span><%= book.upvotes %></span>
-            <%= link_to(nomination_path(book.nomination.id), remote: true, method: :put) do %>
-                <i id="vote-icon-<%= book.nomination.id %>" class="far fa-thumbs-up"></i>
-            <% end %>
-        </span>
-        <span><%= "#{book.title} by #{book.author}" %></span>
-    </li>
-<% end %>
+<ul id="nominated-books">
+    <%= render(@books) %>
+</ul>
 
 <%= link_to("Nominate a new book", new_nomination_path) %>

@@ -1,2 +1,1 @@
-$("<%= '.upvotes-' + @book.nomination.id.to_s %> > span").text(<%= @book.upvotes %>);
-$("<%= '#vote-icon-' + @book.nomination.id.to_s %>").addClass("fas").removeClass("far");
+$("#nominated-books .nominated-book-<%= @book.nomination.id %>").html("<%= j render(@book) %>");

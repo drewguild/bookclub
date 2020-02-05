@@ -17,4 +17,12 @@ class NominatedBook
     def upvotes
         nomination.upvotes
     end
+
+    def upvoted_by?(user)
+        nomination.votes.map(&:member).include?(user.member)
+    end
+
+    def to_partial_path
+        'nominated_books/nominated_book'
+    end
 end

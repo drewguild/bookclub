@@ -10,7 +10,15 @@ class NominationsController < ApplicationController
     end
 
     def update
-        nomination = UpvoteNomination.new(params["id"]).call
+        nomination = UpvoteNomination.new(params["id"], current_user.member).call
+
+        @book = NominatedBook.new(nomination, nomination.book)
+
+        render "update.js.erb"
+    end
+
+    def downvote
+        nomination = DownvoteNomination.new(params["id"], current_user.member).call
 
         @book = NominatedBook.new(nomination, nomination.book)
 
