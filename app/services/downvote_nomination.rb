@@ -6,7 +6,6 @@ class DownvoteNomination
 
     def call
         nomination = Nomination.find(@id)
-        nomination.decrement!(:upvotes)
 
         Vote.find_by!(nomination_id: @id, member_id: @member.id).destroy!
 
