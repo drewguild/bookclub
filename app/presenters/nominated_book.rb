@@ -15,7 +15,7 @@ class NominatedBook
     end
 
     def upvotes
-        nomination.upvotes
+        nomination.votes.size
     end
 
     def upvoted_by?(user)

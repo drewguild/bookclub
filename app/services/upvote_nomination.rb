@@ -6,7 +6,6 @@ class UpvoteNomination
 
     def call
         nomination = Nomination.find(@id)
-        nomination.increment!(:upvotes)
 
         Vote.create!(nomination_id: @id, member_id: @member.id)
 
