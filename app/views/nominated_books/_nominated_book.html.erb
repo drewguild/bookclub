@@ -1,12 +1,13 @@
 <li class="nominated-book-<%= nominated_book.nomination.id %>">
     <span class="upvotes-<%= nominated_book.nomination.id %>">
-        <span><%= nominated_book.upvotes %></span>
         <% if nominated_book.upvoted_by?(@current_user) %>
-            <%= link_to(downvote_nomination_path(nominated_book.nomination.id), remote: true, method: :delete) do %>
+            <%= link_to(downvote_nomination_path(nominated_book.nomination), { remote: true, method: :delete, class: "pure-button"}) do %>
+                <span><%= nominated_book.upvotes %></span>
                 <i class="fas fa-thumbs-up"></i>
             <% end %>
         <% else %>
-            <%= link_to(nomination_path(nominated_book.nomination.id), remote: true, method: :put) do %>
+            <%= link_to(nomination_path(nominated_book.nomination.id), { remote: true, method: :put, class: "pure-button" }) do %>
+                <span><%= nominated_book.upvotes %></span>
                 <i class="far fa-thumbs-up"></i>
             <% end %>
         <% end %>
