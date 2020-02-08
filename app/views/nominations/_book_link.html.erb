@@ -1,0 +1,7 @@
+<% link_base = "https://www.google.com/search?q=" %>
+<% query_string = (book_link.title + " " + book_link.author).gsub(" ", "+")  %>
+<% link_suffix = "&tbm=bks" %>
+<% link = link_base + query_string + link_suffix %>
+<%= link_to(link, target: :_blank) do %>
+    <i class="fas fa-external-link-alt"></i>
+<% end %>
