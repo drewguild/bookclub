@@ -29,7 +29,6 @@ class NominationsController < ApplicationController
 
     private
 
-    #TODO: use current user member once there's users
     def member
         current_user.member
     end
