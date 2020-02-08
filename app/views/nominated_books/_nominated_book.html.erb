@@ -13,4 +13,5 @@
         <% end %>
     </span>
     <span><%= "#{nominated_book.title} by #{nominated_book.author}" %></span>
+    <span><%= render partial: "book_link", object: nominated_book %></span>
 </li>
