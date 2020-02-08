@@ -7,6 +7,8 @@ class NominationsController < ApplicationController
 
     def create
         NominateBook.new(member, params["title"], params["author"]).call
+
+        redirect_to nominations_path
     end
 
     def update
