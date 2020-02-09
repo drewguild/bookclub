@@ -14,4 +14,5 @@
     </span>
     <span><%= "#{nominated_book.title} by #{nominated_book.author}" %></span>
     <span><%= render partial: "book_link", object: nominated_book %></span>
+    <%= link_to("X", nomination_path(nominated_book.nomination.id), { remote: true, method: :delete}) if nominated_book.nominated_by?(@current_user) %>
 </li>

@@ -18,6 +18,13 @@ class NominatedBook
         nomination.votes.size
     end
 
+    def nominated_by?(user)
+        puts "!!!"
+        puts "#{nomination.member_id}"
+        puts "#{user.member_id}"
+        !!(nomination.member_id == user.member_id)
+    end
+
     def upvoted_by?(user)
         nomination.votes.map(&:member).include?(user.member)
     end
