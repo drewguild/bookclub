@@ -11,6 +11,12 @@ class NominationsController < ApplicationController
         redirect_to nominations_path
     end
 
+    def destroy
+        @id = RevokeNomination.new(nomination).call
+
+        render "destroy.js.erb"
+    end
+
     def update
         nomination = UpvoteNomination.new(params["id"], current_user.member).call
 
@@ -31,5 +37,9 @@ class NominationsController < ApplicationController
 
     def member
         current_user.member
+    end
+
+    def nomination
+        Nomination.find(params["id"])
     end
 end
