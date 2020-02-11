@@ -1,0 +1,14 @@
+<%= form_with(url: "users/#{@current_user.id}", method: "put", class: "pure-form-stacked") do %>
+    <%= label_tag(:current_password, "Current Password: ") %>
+    <%= password_field_tag(:current_password) %>
+    <%= label_tag(:new_password, "New Password: ") %>
+    <%= password_field_tag(:new_password) %>
+    <%= label_tag(:new_password_confirmation, "Confirm New Password: ") %>
+    <%= password_field_tag(:new_password_confirmation) %>
+    <%= submit_tag("Okie doke") %>
+<% end %>
+<% if flash[:alert] %>
+    <p class="form-alert">Error: <%= flash[:alert] %></p>
+<% elsif flash[:success] %>
+    <p class="form-success">Success!</p>
+<% end %>

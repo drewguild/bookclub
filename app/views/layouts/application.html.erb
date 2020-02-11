@@ -15,6 +15,8 @@
       <div class="pure-u-8-24">
         <header>
           <ul class="pure-horizontal-menu">
+            <p> Hello, <% @current_user.member.first_name %> </p>
+            <%= link_to("My account", "/account") %>
             <%= form_with(url: "/sessions/#{session[:user_id]}", method: "delete", class: "sm-right") do %>
                 <% submit_tag("Logout") %>
             <% end %>
