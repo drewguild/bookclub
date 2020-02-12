@@ -13,4 +13,16 @@ namespace :club do
             end
         end
     end
+
+    task :seed_member => :environment do
+        club = Club.find_by(name: ENV['CLUB'])
+
+        member = club.create_member!(ENV['NAME'])
+
+        User.create!(
+            member: member,
+            username: member.first_name.downcase[0] + member.last_name.downcase,
+            password: "password1b"
+        )
+    end
 end
