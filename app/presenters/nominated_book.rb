@@ -19,9 +19,6 @@ class NominatedBook
     end
 
     def nominated_by?(user)
-        puts "!!!"
-        puts "#{nomination.member_id}"
-        puts "#{user.member_id}"
         !!(nomination.member_id == user.member_id)
     end
 
