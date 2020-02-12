@@ -1,7 +1,7 @@
 <h1>Book Nominations</h1>
 
-<ul id="nominated-books">
+<table id="nominated-books", class="pure-table-horizontal">
     <%= render(@books) %>
-</ul>
+</table>
 
 <%= link_to("Nominate a new book", new_nomination_path) %>
