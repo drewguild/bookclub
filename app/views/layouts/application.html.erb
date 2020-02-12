@@ -13,15 +13,7 @@
     <div class="pure-g">
       <div class="pure-u-4-24"></div>
       <div class="pure-u-16-24">
-        <header>
-          <ul class="pure-horizontal-menu">
-            <p> Hello, <% @current_user.member.first_name %> </p>
-            <%= link_to("My account", "/account") %>
-            <%= form_with(url: "/sessions/#{session[:user_id]}", method: "delete", class: "sm-right") do %>
-                <% submit_tag("Logout") %>
-            <% end %>
-          </ul>
-        </header>
+        <%= render partial: "/header_menu" %>
         <%= yield %>
       </div>
       <div class="pure-u-4-24"></div>
