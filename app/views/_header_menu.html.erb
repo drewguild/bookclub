@@ -2,7 +2,7 @@
 <header class="pure-menu pure-menu-horizontal">
   <ul class="pure-menu-list">
     <li class="pure-menu-item">
-      <p> Hello, <% @current_user.member.first_name.presence %> </p>
+      <p> Hello, <% @current_user.member.first_name if @current_user %> </p>
     </li>
     <li class="pure-menu-item">
       <%= link_to("Home", "/") %>
