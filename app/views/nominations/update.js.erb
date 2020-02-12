@@ -1,1 +1,1 @@
-$("#nominated-books .nominated-book-<%= @book.nomination.id %>").html("<%= j render(@book) %>");
+$("#nominated-books .nominated-book-<%= @book.nomination.id %>").replaceWith("<%= j render(@book) %>");
