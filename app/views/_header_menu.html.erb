@@ -1,0 +1,19 @@
+
+<header class="pure-menu pure-menu-horizontal">
+  <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+      <p> Hello, <% @current_user.member.first_name.presence %> </p>
+    </li>
+    <li class="pure-menu-item">
+      <%= link_to("Home", "/") %>
+    </li>
+    <li class="pure-menu-item">
+      <%= link_to("My account", "/account") %>
+    </li>
+    <li class="pure-menu-item">
+      <%= form_with(url: "/sessions/#{session[:user_id]}", method: "delete", class: "sm-right") do %>
+          <% submit_tag("Logout") %>
+      <% end %>
+    </li>
+  </ul>
+</header>
