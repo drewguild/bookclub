@@ -2,6 +2,10 @@ ul li{
     list-style: none;
 }
 
+#nominated-books td{
+    padding: 8px;
+}
+
 .form-alert{
     color: maroon;
 }
