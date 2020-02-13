@@ -8,21 +8,12 @@ end
 
 class LibraryAdapter
     def search(title, author)
-        url = "http://openlibrary.org/search.json?title=#{title.queryize}&author=#{author.queryize}"
+        url = "https://www.googleapis.com/books/v1/volumes?q=#{(title + ' ' + author).queryize}"
         uri = URI(url)
         response = Net::HTTP.get(uri)
 
         #WARNING: this first is a simplification. Many results possibly excluded
-        data = JSON.parse(response)["docs"].first
-        DeserializedSearchResult.new(data)
-    end
-
-    def get_book(isbn)
-        bibkey = "ISBN:#{isbn}"
-        url = "https://openlibrary.org/api/books?bibkeys=#{bibkey}&format=json&jscmd=details"
-        uri = URI(url)
-        response = Net::HTTP.get(uri)
-        data = JSON.parse(response)["ISBN:#{isbn}"]
+        data = JSON.parse(response)["items"].first["volumeInfo"]
         DeserializedBook.new(data)
     end
 
@@ -32,17 +23,7 @@ class LibraryAdapter
         end
 
         def description
-            @data.dig("details", "description")
-        end
-    end
-
-    class DeserializedSearchResult
-        def initialize(json)
-            @data = json
-        end
-
-        def isbns
-            @data["isbn"]
+            @data.dig("description")
         end
     end
 end

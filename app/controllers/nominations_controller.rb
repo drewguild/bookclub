@@ -6,7 +6,9 @@ class NominationsController < ApplicationController
     def new; end
 
     def create
-        NominateBook.new(member, params["title"], params["author"]).call
+        nominated_book = NominateBook.new(member, params["title"], params["author"]).call
+
+        Books::SynchronizeBook.new(nominated_book.book).call
 
         redirect_to nominations_path
     end
