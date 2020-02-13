@@ -2,8 +2,13 @@ ul li{
     list-style: none;
 }
 
+table{
+    width: 100%
+}
+
 #nominated-books td{
-    padding: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     vertical-align: top;
 }
 
