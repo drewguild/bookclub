@@ -32,7 +32,7 @@ class LibraryAdapter
         end
 
         def description
-            @data.dig("details", "description", "value")
+            @data.dig("details", "description")
         end
     end
 
