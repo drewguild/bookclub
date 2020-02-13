@@ -1,3 +1,5 @@
+require 'net/http'
+
 #TODO: this adapter will be decomposed once interactions with the API take on more shape
 # should separate OpenLibraryAPI specifics from generic interaction stuff
 class String
