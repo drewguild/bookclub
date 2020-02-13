@@ -4,6 +4,7 @@ ul li{
 
 #nominated-books td{
     padding: 8px;
+    vertical-align: top;
 }
 
 .form-alert{
