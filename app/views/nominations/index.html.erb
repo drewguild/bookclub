@@ -4,4 +4,18 @@
     <%= render(@books) %>
 </table>
 
+<script>
+$("small[data-toggle-show]").click( function(e){
+    description = $("#" + $(this).data("toggle-show"))
+
+    if(description.attr('hidden')) {
+        $(this).text("Less");
+        description.removeAttr('hidden');
+    } else {
+        $(this).text("More");
+        description.attr('hidden', true);
+    }
+});
+</script>
+
 <%= link_to("Nominate a new book", new_nomination_path) %>

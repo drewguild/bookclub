@@ -14,6 +14,10 @@ class NominatedBook
         book.title
     end
 
+    def description
+        book.description || "No description available"
+    end
+
     def upvotes
         nomination.votes.size
     end

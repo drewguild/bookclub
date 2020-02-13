@@ -12,7 +12,17 @@
             <% end %>
         <% end %>
     </td>
-    <td><%= "#{nominated_book.title} by #{nominated_book.author}" %></td>
+    <td>
+        <span>
+            <span><%= "#{nominated_book.title} by #{nominated_book.author}" %></span>
+            <small data-toggle-show="description-<%= nominated_book.nomination.id %>">More</small>
+        <span>
+        <p>
+            <small id="description-<%= nominated_book.nomination.id %>" hidden>
+                <%= nominated_book.description %>
+            </small>
+        </p>
+    </td>
     <td><%= render partial: "book_link", object: nominated_book %></td>
     <td><%= link_to("X", nomination_path(nominated_book.nomination.id), { remote: true, method: :delete}) if nominated_book.nominated_by?(@current_user) %></td>
 </tr>
