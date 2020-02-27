@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  held_on: 2020-02-27
+  club_id: 
+  selection_deadline: 2020-02-27
+
+two:
+  held_on: 2020-02-27
+  club_id: 
+  selection_deadline: 2020-02-27
