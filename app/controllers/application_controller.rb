@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     @current_user = User.find(session[:user_id])
   end
 
+  def current_member
+    @current_member = current_user.member
+  end
+
   private
 
   def require_login

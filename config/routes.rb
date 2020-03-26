@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: "sessions#login"
 
+  get "/overview" => "clubs#overview"
+
   resources :users, only: [:update] do
-    
   end
   
   get "/account" => "users#manage_account"
