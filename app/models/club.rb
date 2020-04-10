@@ -11,6 +11,6 @@ class Club < ApplicationRecord
     end
 
     def next_meeting
-        meetings.upcoming.first
+        meetings.upcoming.first || NullMeeting.new
     end
 end

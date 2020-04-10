@@ -11,8 +11,12 @@ class ClubOverview
         end
     end
 
+    def club_name
+        club.name
+    end
+
     def next_meeting_date
-        (club.next_meeting || NullMeeting.new).held_on
+        club.next_meeting.held_on
     end
 
     def total_members
