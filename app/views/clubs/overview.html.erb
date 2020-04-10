@@ -1,6 +1,9 @@
 <h2><%= @overview.club_name %></h2>
 
-<p><b>Next meeting: <%= @overview.next_meeting_date %></b></p>
+<p>
+  <b>Next meeting: <%= @overview.next_meeting_date %></b>
+  <a href= <%= "/meetings/#{@overview.next_meeting.id}/edit" %>>Edit</a>  
+</p>
 <b>
     <%= @overview.voted_members_count %> of <%= @overview.total_members %> members have voted. 
 </b>

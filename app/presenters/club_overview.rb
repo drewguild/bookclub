@@ -12,7 +12,11 @@ class ClubOverview
     end
 
     def club_name
-        club.name
+      club.name
+    end
+
+    def next_meeting
+      club.next_meeting
     end
 
     def next_meeting_date
