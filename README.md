@@ -1,24 +1,31 @@
-# README
+# Bookclub
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+My pass at making a bookclub management app for my own bookclub. A place for us to track book nominations, meetings, etc. A place to explore Rails patterns beyond MVC. Also interested in seeing how far I can go with just vanillajs and Jquery frontend.
 
-* Ruby version
+## Live
 
-* System dependencies
+See it [here](https://core-of-bookclub.herokuapp.com/)
 
-* Configuration
+## Roadmap
+:heavy_check_mark: Basic user auth
 
-* Database creation
+:heavy_check_mark: Members can nominate books and details are autopopulated from external data source (e.g Google Books)
 
-* Database initialization
+:heavy_check_mark: Members can upvote books they are interested in
 
-* How to run the test suite
+:construction_worker: Clubs can set and change meeting dates
 
-* Services (job queues, cache servers, search engines, etc.)
+:x: Book nominations are associated to particular meetings
 
-* Deployment instructions
+:x: Email updates to users
 
-* ...
+:x: etc.
+
+## Running
+
+- Clone
+- `bundle install` to get dependencies
+- `rake db:create` and `rake db:migrate` to build database
+- `rails s` to run on port 3000 (`localhost:3000`)
