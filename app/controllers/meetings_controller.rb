@@ -10,6 +10,10 @@ class MeetingsController < ApplicationController
 
   def edit
     @meeting = Meeting.find(params["id"])
+
+    @meeting_options = {
+      books: book_options
+    }
   end
 
   def new
