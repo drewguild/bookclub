@@ -10,6 +10,10 @@ class NominatedBook
         book.author
     end
 
+    def id 
+      book.id
+    end
+
     def title
         book.title
     end
