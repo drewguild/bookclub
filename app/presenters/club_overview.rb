@@ -16,7 +16,7 @@ class ClubOverview
     end
 
     def meetings
-      club.meetings
+      club.upcoming_meetings
     end
 
     def next_meeting
