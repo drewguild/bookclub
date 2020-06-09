@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
+  get "/meetings/:id/edit" => "meetings#edit"
+  put "/meetings/:id" => "meetings#update"
+
   resources :nominations, only: [:new, :create, :destroy, :index, :update] do
     member do
       delete "/downvote" => "nominations#downvote", as: "downvote"
