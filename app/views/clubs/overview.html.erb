@@ -1,12 +1,15 @@
 <h2><%= @overview.club_name %></h2>
 
+<h3>Upcoming Meetings</h3>
+
 <p>
-  <b>Next meeting: <%= @overview.next_meeting_date %></b>
+  <span>Book Discussion: <%= @overview.next_meeting_date %></span>
   <a href= <%= "/meetings/#{@overview.next_meeting.id}/edit" %>>Edit</a>  
 </p>
-<b>
-    <%= @overview.voted_members_count %> of <%= @overview.total_members %> members have voted. 
-</b>
+<a href="/meetings/new">New Meeting</a>
+
+
+<h3>Nominated Books</h3>
 
 <table id="nominated-books", class="pure-table-horizontal">
     <%= render(@overview.books) %>
