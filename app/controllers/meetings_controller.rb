@@ -3,6 +3,10 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params["id"])
   end
 
+  def new
+
+  end
+
   def update
     Meetings::UpdateMeeting.new(params).call
 
