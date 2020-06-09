@@ -13,6 +13,7 @@
 <table id="nominated-books", class="pure-table-horizontal">
     <%= render(@overview.books) %>
 </table>
+<%= link_to("Nominate a new book", new_nomination_path) %>
 
 <script>
 $("small[data-toggle-show]").click( function(e){
