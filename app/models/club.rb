@@ -3,14 +3,18 @@ class Club < ApplicationRecord
     has_many :members
     
     def create_member!(member_name)
-        first, last = member_name.split(" ")
-        members.create!(
-            first_name: first,
-            last_name: last
-        )
+      first, last = member_name.split(" ")
+      members.create!(
+          first_name: first,
+          last_name: last
+      )
+    end
+
+    def upcoming_meetings
+      meetings.upcoming
     end
 
     def next_meeting
-        meetings.upcoming.first || NullMeeting.new
+      meetings.upcoming.first || NullMeeting.new
     end
 end

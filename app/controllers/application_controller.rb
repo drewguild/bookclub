@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   protect_from_forgery with: :exception
 
+  def current_club
+    current_member && current_member.club
+  end
+
   def current_user
     return unless session[:user_id]
     

@@ -1,5 +1,7 @@
 <h1>Edit Meeting</h1>
 <%= form_with(url: "/meetings/#{@meeting.id}", method: "put", class: "pure-form-stacked") do %>
+  <%= label_tag(:book, "Book") %>
+  <%= select(:meeting, :book_id, @meeting_options[:books])%>
   <%= label_tag(:meeting_held_on, "Meeting Date")%>
   <%= date_field(:meeting, :held_on) %>
   <%= submit_tag("Submit Changes") %>

@@ -4,12 +4,16 @@ class MeetingsController < ApplicationController
       redirect_to meetings_new_path, { flash: { error: "Please include all fields" } } and return
     end
 
-    Meetings::Create.new(meeting_param).call
+    Meetings::Create.new(meeting_param.merge(club_id: current_club.id)).call
     redirect_to overview_path
   end
 
   def edit
     @meeting = Meeting.find(params["id"])
+
+    @meeting_options = {
+      books: book_options
+    }
   end
 
   def new

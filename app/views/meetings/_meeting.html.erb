@@ -1,0 +1,8 @@
+<li>
+  <span>
+    <span><%= meeting.held_on.strftime("%b %e %Y") %></span>
+    Book Discussion: 
+    <i><%= meeting.book.title %></i>
+    <a href= <%= "/meetings/#{meeting.id}/edit" %>>Edit</a>
+    </span>
+</li>

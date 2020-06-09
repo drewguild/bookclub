@@ -1,3 +1,4 @@
 class Member < ApplicationRecord
-    has_many :nominations
+  belongs_to :club
+  has_many :nominations
 end
