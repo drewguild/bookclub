@@ -1,4 +1,8 @@
 <h1>New Meeting</h1>
+<% if flash %>
+  <p><%= flash[:error] %>
+<% end %>
+
 <%= form_with(url: "/meetings", method: "post", class: "pure-form-stacked") do %>
   <%= label_tag(:book, "Book") %>
   <%= select(:meeting, :book_id, @meeting_options[:books])%>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get "/meetings/:id/edit" => "meetings#edit"
   get "/meetings/new" => "meetings#new"
+  post "/meetings" => "meetings#create"
   put "/meetings/:id" => "meetings#update"
 
   resources :nominations, only: [:new, :create, :destroy, :index, :update] do
