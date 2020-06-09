@@ -15,6 +15,10 @@ class ClubOverview
       club.name
     end
 
+    def meetings
+      club.meetings
+    end
+
     def next_meeting
       club.next_meeting
     end
