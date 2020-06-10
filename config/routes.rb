@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   post "/meetings" => "meetings#create"
   put "/meetings/:id" => "meetings#update"
 
+  resources :books, only: [] do
+    member do
+      post "/mark_read" => "books#mark_read"
+    end
+  end
+
   resources :nominations, only: [:new, :create, :destroy, :index, :update] do
     member do
       delete "/downvote" => "nominations#downvote", as: "downvote"
