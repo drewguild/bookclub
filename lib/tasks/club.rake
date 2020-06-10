@@ -25,4 +25,15 @@ namespace :club do
             password: "password1b"
         )
     end
+
+    task :seed_collections => :environment do
+      Club.all.each do |club|
+        Collection::Types::ALL.each do |collection_type|
+          Collection.find_or_create_by(
+            club_id: club.id,
+            type: collection_type
+          )
+        end
+      end
+    end
 end
