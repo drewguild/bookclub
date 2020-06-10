@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   post "/meetings" => "meetings#create"
   put "/meetings/:id" => "meetings#update"
 
-  resources :books, only: [] do
+  resources :books, only: [:create] do
     member do
       post "/mark_read" => "books#mark_read"
+    end
+
+    collection do
+      get "/add_read" => "books#add_read"
     end
   end
 
