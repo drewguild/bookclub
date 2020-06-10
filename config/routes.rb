@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   
   get "/account" => "users#manage_account"
+  get "/library" => "books#completed"
 
   resources :sessions, only: [:create, :destroy]
 
