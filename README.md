@@ -15,7 +15,9 @@ See it [here](https://core-of-bookclub.herokuapp.com/)
 
 :heavy_check_mark: Members can upvote books they are interested in
 
-:construction_worker: Clubs can set and change meeting dates
+:heavy_check_mark: Clubs can set and change meeting dates
+
+:construction_worker: Clubs can track previously read books + move nominations to read
 
 :x: Book nominations are associated to particular meetings
 
