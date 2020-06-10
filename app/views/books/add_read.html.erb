@@ -1,0 +1,9 @@
+<h1>Add to library</h1>
+<%= form_with(url: "/books", method: "post", class: "pure-form-stacked") do %>
+    <%= label_tag(:title, "Title") %>
+    <%= text_field_tag(:title) %>
+    <%= label_tag(:author, "Author") %>
+    <%= text_field_tag(:author) %>
+    <%= hidden_field(nil, :collection_type, value: Collection::Types::READ)%>
+    <%= submit_tag("Add") %>
+<% end %>
