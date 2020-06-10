@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   
   get "/account" => "users#manage_account"
+  get "/library" => "books#completed"
 
   resources :sessions, only: [:create, :destroy]
 
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
   get "/meetings/new" => "meetings#new"
   post "/meetings" => "meetings#create"
   put "/meetings/:id" => "meetings#update"
+
+  resources :books, only: [] do
+    member do
+      post "/mark_read" => "books#mark_read"
+    end
+  end
 
   resources :nominations, only: [:new, :create, :destroy, :index, :update] do
     member do

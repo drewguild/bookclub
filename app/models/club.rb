@@ -1,6 +1,7 @@
 class Club < ApplicationRecord
     has_many :meetings
     has_many :members
+    has_many :collections
     
     def create_member!(member_name)
       first, last = member_name.split(" ")
