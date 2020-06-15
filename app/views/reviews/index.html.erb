@@ -5,6 +5,13 @@
   <p><%= @book.description %></p>
 </div>
 
-<ul>
+<ul id="reviews">
   <%= render(@book.reviews) %>
-<ul>
+</ul>
+
+<% if !@book.reviewed_by?(@current_member) %>
+  <%= form_with(url: reviews_book_path, method: :post, remote: true, id: "review-form", class: "pure-form-stacked") do %>
+    <%= text_area_tag(:text, "", { size: "80x5", placeholder: "What did you think?" }) %>
+    <%= submit_tag("Add review") %>  
+  <% end %>
+<% end %>
