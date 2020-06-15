@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :books, only: [:create] do
     member do
       post "/mark_read" => "books#mark_read"
+      get "/reviews" => "reviews#index"
     end
 
     collection do

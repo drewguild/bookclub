@@ -2,5 +2,6 @@
   <span>
     <img height=100 width=75 src=<%= book.thumbnail || "" %> />
     <span><%= "#{book.title} by #{book.author}" %></span>
+    <a href=<%= %"/books/#{book.id}/reviews" %>><i class="far fa-comments"></i></a>
   </span>
 </li>
