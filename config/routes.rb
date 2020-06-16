@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
       get "/reviews" => "reviews#index"
       post "/reviews" => "reviews#create"
+      put "/reviews" => "reviews#edit"
       delete "/reviews" => "reviews#destroy"
     end
 

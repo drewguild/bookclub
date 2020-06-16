@@ -16,6 +16,18 @@ class ReviewsController < ApplicationController
     render "destroy.js.erb"
   end
 
+  def edit
+    @review = Review.find_by(
+      book_id: params[:id], 
+      member_id: current_member.id
+    )
+    
+    @review.update_attributes!(editable_params)
+    @review.reload
+
+    render "edit.js.erb"
+  end
+
   private
 
   def book_params
@@ -23,5 +35,9 @@ class ReviewsController < ApplicationController
       book_id: params[:id],
       member_id: current_member.id
     })
+  end
+
+  def editable_params
+    params.slice(:text).permit!
   end
 end

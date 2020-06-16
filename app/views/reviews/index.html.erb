@@ -15,3 +15,19 @@
     <%= submit_tag("Add review") %>  
   <% end %>
 <% end %>
+
+<script>
+  $("span[data-toggle-edit]").click( function(e) { 
+    reviewElement = $("#" + $(this).data("toggle-edit") )
+
+    if ( reviewElement.attr("edit-mode") ) {
+      reviewElement.removeAttr("edit-mode")
+      reviewElement.children(".show-on-edit").attr("hidden", true);
+      reviewElement.children().not(".show-on-edit").attr("hidden", false)
+    } else {
+      reviewElement.attr("edit-mode", true);
+      reviewElement.children(".show-on-edit").attr("hidden", false);
+      reviewElement.children().not(".show-on-edit").attr("hidden", true)
+    };
+  });
+</script>
