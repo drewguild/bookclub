@@ -1,0 +1,33 @@
+<h2><%= @book.title %></h2>
+<h3><%= @book.author %></h3>
+<div>
+  <img height=175 width=125 src=<%= @book.thumbnail %> style="float:left" />
+  <p><%= @book.description %></p>
+</div>
+
+<ul id="reviews">
+  <%= render(@book.reviews) %>
+</ul>
+
+<% if !@book.reviewed_by?(@current_member) %>
+  <%= form_with(url: reviews_book_path, method: :post, remote: true, id: "review-form", class: "pure-form-stacked") do %>
+    <%= text_area_tag(:text, "", { size: "80x5", placeholder: "What did you think?" }) %>
+    <%= submit_tag("Add review") %>  
+  <% end %>
+<% end %>
+
+<script>
+  $("span[data-toggle-edit]").click( function(e) { 
+    reviewElement = $("#" + $(this).data("toggle-edit") )
+
+    if ( reviewElement.attr("edit-mode") ) {
+      reviewElement.removeAttr("edit-mode")
+      reviewElement.children(".show-on-edit").attr("hidden", true);
+      reviewElement.children().not(".show-on-edit").attr("hidden", false)
+    } else {
+      reviewElement.attr("edit-mode", true);
+      reviewElement.children(".show-on-edit").attr("hidden", false);
+      reviewElement.children().not(".show-on-edit").attr("hidden", true)
+    };
+  });
+</script>

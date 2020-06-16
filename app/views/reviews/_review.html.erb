@@ -1,0 +1,23 @@
+<div class=<%= "review-#{review.id}" %>>
+  <span>
+    <b><%= review.member.name %></b>
+    <% if review.written_by?(@current_member) %>
+      <span data-toggle-edit="review-<%= review.id %>" ><i class="fas fa-pencil-alt"></i></span>
+      <%= link_to(reviews_book_path(review.book_id), { remote: true, method: :delete, data: { confirm: "Are you sure?" } }) do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    <% end %>
+  </span>
+
+  <div id="review-<%= review.id %>">
+    <% if review.written_by?(@current_member) %>
+      <div class="show-on-edit" hidden=true>
+        <%= form_with(url: reviews_book_path, method: :put, remote: true, id: "review-form", class: "pure-form-stacked") do %>
+          <%= text_area_tag(:text, review.text, { size: "80x5", placeholder: "What did you think?" }) %>
+          <%= submit_tag("Save Changes") %>  
+        <% end %>
+      </div>
+    <% end %>
+    <p> <%= review.text %></p>
+  </div>
+</div>
