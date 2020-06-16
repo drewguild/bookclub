@@ -10,6 +10,12 @@ class ReviewsController < ApplicationController
     render "create.js.erb"
   end
 
+  def destroy
+    @review = Review.find_by!(book_id: params[:id], member_id: current_member.id).destroy!
+
+    render "destroy.js.erb"
+  end
+
   private
 
   def book_params

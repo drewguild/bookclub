@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   resources :books, only: [:create] do
     member do
       post "/mark_read" => "books#mark_read"
+
       get "/reviews" => "reviews#index"
-      post "reviews" => "reviews#create"
+      post "/reviews" => "reviews#create"
+      delete "/reviews" => "reviews#destroy"
     end
 
     collection do
