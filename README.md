@@ -8,6 +8,8 @@ My pass at making a bookclub management app for my own bookclub. A place for us 
 
 See it [here](https://core-of-bookclub.herokuapp.com/)
 
+To see it in action, test username:password is `dsample:letmein`. (Since the app is mostly intended for my bookclub, I haven't prioritized club administration features)
+
 ## Roadmap
 :heavy_check_mark: Basic user auth
 
