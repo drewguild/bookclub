@@ -19,11 +19,17 @@ To see it in action, test username:password is `dsample:letmein`. (Since the app
 
 :heavy_check_mark: Clubs can set and change meeting dates
 
-:construction_worker: Clubs can track previously read books + move nominations to read
+:heavy_check_mark: Clubs can track previously read books + move nominations to read
 
-:x: Book nominations are associated to particular meetings
+:heavy_check_mark: Members can leave a review on each book
+
+:construction_worker: Improve book data pulled from books.google
+
+:x: Generated recommendations
 
 :x: Email updates to users
+
+:x: Google Calendar sync
 
 :x: etc.
 
