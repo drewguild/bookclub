@@ -1,7 +1,12 @@
-<li>
-  <span>
+<li class="pure-g book-list-item">
+  <div class="pure-u-1-8">
     <img height=100 width=75 src=<%= book.thumbnail || "" %> />
-    <span><%= "#{book.title} by #{book.author}" %></span>
+  </div>
+  <div class="pure-u-3-8">
+    <p><i><%= "#{book.title}" %></i></p>
+    <p><%= "#{book.author}"%></p>
+  </div>
+  <div class="pure-u-1-2">
     <a href=<%= %"/books/#{book.id}/reviews" %>><i class="far fa-comments"></i></a>
-  </span>
+  </div>
 </li>
