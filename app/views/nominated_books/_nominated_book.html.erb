@@ -1,5 +1,5 @@
 <tr class="pure-g nominated-book-<%= nominated_book.nomination.id %>">
-    <td class="pure-u-3-24 upvotes-<%= nominated_book.nomination.id %>">
+    <td class="pure-u-1-4 upvotes-<%= nominated_book.nomination.id %>">
         <% if nominated_book.upvoted_by?(@current_user) %>
             <%= link_to(downvote_nomination_path(nominated_book.nomination), { remote: true, method: :delete, class: "pure-button"}) do %>
                 <span><%= nominated_book.upvotes %></span>
@@ -12,7 +12,7 @@
             <% end %>
         <% end %>
     </td>
-    <td class="pure-u-15-24">
+    <td class="pure-u-1-2">
         <span>
             <span><%= "#{nominated_book.title} by #{nominated_book.author}" %></span>
             <small data-toggle-show="description-<%= nominated_book.nomination.id %>">More</small>
@@ -23,11 +23,11 @@
             </small>
         </p>
     </td>
-    <td class="pure-u-1-24" ><%= render partial: "nominations/book_link", object: nominated_book %></td>
-    <td class="pure-u-1-24" >
+    <td class="pure-u-1-12" ><%= render partial: "nominations/book_link", object: nominated_book %></td>
+    <td class="pure-u-1-12" >
       <%= link_to(mark_read_book_path(nominated_book.book.id), { remote: true, method: :post}) do %>
         <i class="fas fa-book" title="Mark as Read"></i>
       <% end %>
     </td>
-    <td class="pure-u-4-24"><%= link_to("X", nomination_path(nominated_book.nomination.id), { remote: true, method: :delete}) if nominated_book.nominated_by?(@current_user) %></td>
+    <td class="pure-u-1-12"><%= link_to("X", nomination_path(nominated_book.nomination.id), { remote: true, method: :delete}) if nominated_book.nominated_by?(@current_user) %></td>
 </tr>
