@@ -1,6 +1,6 @@
 class Collection < ActiveRecord::Base
   self.inheritance_column = ""
-  belongs_to :club
+  belongs_to :owner, polymorphic: true
   has_many :books_collections, class_name: "BooksCollections"
   has_many :books, through: :books_collections 
 
