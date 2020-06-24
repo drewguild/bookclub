@@ -1,8 +1,12 @@
 <h2><%= @book.title %></h2>
 <h3><%= @book.author %></h3>
-<div>
-  <img height=175 width=125 src=<%= @book.thumbnail %> style="float:left" />
-  <p><%= @book.description %></p>
+<div class="pure-g">
+  <div class="pure-u-1-6">
+    <img height=175 width=125 src=<%= @book.thumbnail %> style="float:left" />
+  </div>
+  <div class="pure-u-5-6">
+    <p><%= @book.description %></p>
+  </div>
 </div>
 
 <ul id="reviews">

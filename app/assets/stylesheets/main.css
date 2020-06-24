@@ -1,5 +1,37 @@
+header{
+  padding: 0em 1em; 
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  background: slategray;
+  color: white;
+}
+
+header a{
+  color: white;
+  text-decoration: none;
+}
+
+header input {
+  color: black;
+}
+
+#content {
+  margin-top: 60px;
+}
+
+a{
+  padding: 1em;
+}
+
 ul li{
     list-style: none;
+}
+
+.book-list-item {
+  padding-top: 1em;
 }
 
 table{
