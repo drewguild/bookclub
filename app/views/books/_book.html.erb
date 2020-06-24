@@ -1,12 +1,12 @@
 <li class="pure-g book-list-item">
-  <div class="pure-u-1-8">
-    <img height=100 width=75 src=<%= book.thumbnail || "" %> />
+  <div class="pure-u-2-8">
+    <img height=80% width=80% src=<%= book.thumbnail || "" %> />
   </div>
-  <div class="pure-u-3-8">
+  <div class="pure-u-5-8">
     <p><i><%= "#{book.title}" %></i></p>
     <p><%= "#{book.author}"%></p>
   </div>
-  <div class="pure-u-1-2">
+  <div class="pure-u-1-8">
     <a href=<%= %"/books/#{book.id}/reviews" %>><i class="far fa-comments"></i></a>
   </div>
 </li>

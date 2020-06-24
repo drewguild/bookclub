@@ -1,10 +1,10 @@
 <h2><%= @book.title %></h2>
 <h3><%= @book.author %></h3>
-<div class="pure-g">
-  <div class="pure-u-1-6">
-    <img height=175 width=125 src=<%= @book.thumbnail %> style="float:left" />
+<div id="book-details">
+  <div>
+    <img height=175 width=125 src=<%= @book.thumbnail %> />
   </div>
-  <div class="pure-u-5-6">
+  <div>
     <p><%= @book.description %></p>
   </div>
 </div>
@@ -15,7 +15,7 @@
 
 <% if !@book.reviewed_by?(@current_member) %>
   <%= form_with(url: reviews_book_path, method: :post, remote: true, id: "review-form", class: "pure-form-stacked") do %>
-    <%= text_area_tag(:text, "", { size: "80x5", placeholder: "What did you think?" }) %>
+    <%= text_area_tag(:text, "", { placeholder: "What did you think?" }) %>
     <%= submit_tag("Add review") %>  
   <% end %>
 <% end %>

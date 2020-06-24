@@ -5,13 +5,13 @@
       <p> Hello, <%= @current_user.member.first_name if @current_user %> </p>
     </li>
     <li class="pure-menu-item">
-      <%= link_to("Home", "/") %>
+      <%= link_to("Home", "/", class: "pure-menu-link") %>
     </li>
     <li class="pure-menu-item">
-      <%= link_to("Library", "/library") %>
+      <%= link_to("Library", "/library", class: "pure-menu-link") %>
     </li>
     <li class="pure-menu-item">
-      <%= link_to("My account", "/account") %>
+      <%= link_to("My account", "/account", class: "pure-menu-link") %>
     </li>
     <li class="pure-menu-item">
       <%= form_with(url: "/sessions/#{session[:user_id]}", method: "delete", class: "sm-right") do %>
@@ -20,3 +20,13 @@
     </li>
   </ul>
 </header>
+
+<script>
+  if (window.screen.width < 600) {
+    $("header").removeClass("pure-menu-horizontal");
+    $("header").addClass("pure-menu-vertical");
+  } else {
+    $("header").addClass("pure-menu-horizontal");
+    $("header").removeClass("pure-menu-vertical");
+  }
+</script>
