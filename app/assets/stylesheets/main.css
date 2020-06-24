@@ -39,6 +39,18 @@ ul li{
   padding-top: 1em;
 }
 
+#book-details img{
+  float: left;
+  margin: 1em;
+}
+
+#book-details p {
+}
+
+#review-form textarea {
+  width: 90%
+}
+
 table{
     width: 100%
 }
