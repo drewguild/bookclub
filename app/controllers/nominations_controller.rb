@@ -1,6 +1,6 @@
 class NominationsController < ApplicationController
     def index
-        @books = NominationsQuery.new.all
+        @books = NominationsQuery.new.all_for_club(current_club)
     end
 
     def new; end
@@ -10,7 +10,7 @@ class NominationsController < ApplicationController
 
         Books::SynchronizeBook.new(nominated_book.book).call
 
-        redirect_to nominations_path
+        redirect_to overview_path
     end
 
     def destroy
