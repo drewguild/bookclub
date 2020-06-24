@@ -1,5 +1,12 @@
 <h2><%= @overview.club_name %></h2>
 
+<h3>Members</h3>
+<ul>
+  <% @overview.members.each do |member| %>
+    <li><a href=<%= "/members/#{member.id}" %>><%= member.first_name %></a></li>
+  <% end %>
+</ul>
+
 <h3>Upcoming Meetings</h3>
 
 <ul>

@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :members, only: [:show] do 
+  end
+
   resources :nominations, only: [:new, :create, :destroy, :index, :update] do
     member do
       delete "/downvote" => "nominations#downvote", as: "downvote"
