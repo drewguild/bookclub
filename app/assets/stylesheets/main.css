@@ -5,7 +5,11 @@ header{
   top: 0;
   left: 0;
 
+  color: white;
   background: slategray;
+}
+
+header .pure-menu-link {
   color: white;
 }
 
@@ -17,6 +21,7 @@ header a{
 header input {
   color: black;
 }
+
 
 #content {
   margin-top: 60px;
@@ -46,4 +51,23 @@ table{
 
 .form-alert{
     color: maroon;
+}
+
+@media (max-width: 600px) {
+  header {
+    position: absolute;
+    width: 100%;
+  }
+
+  header li{
+    margin: 2em;
+  }
+
+  header .pure-menu-link {
+    color: white
+  }
+
+  #content {
+    margin-top: 200px;
+  }
 }
