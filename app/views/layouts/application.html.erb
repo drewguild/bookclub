@@ -16,7 +16,9 @@
       <div class="pure-u-4-24"></div>
       <div class="pure-u-16-24">
         <%= render partial: "/header_menu" if @current_user %>
-        <%= yield %>
+        <div id="content">
+          <%= yield %>
+         </div>
       </div>
       <div class="pure-u-4-24"></div>
     </div>

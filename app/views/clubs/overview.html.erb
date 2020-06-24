@@ -5,7 +5,7 @@
 <ul>
   <%= render(@overview.meetings) %>
 </ul>
-<a href="/meetings/new">New Meeting</a>
+<a class="pure-button" href="/meetings/new">New Meeting</a>
 
 
 <h3>Nominated Books</h3>
@@ -13,7 +13,7 @@
 <table id="nominated-books", class="pure-table-horizontal">
     <%= render(@overview.books) %>
 </table>
-<%= link_to("Nominate a new book", new_nomination_path) %>
+<%= link_to("Nominate a new book", new_nomination_path, class: "pure-button") %>
 
 <script>
 $("small[data-toggle-show]").click( function(e){
