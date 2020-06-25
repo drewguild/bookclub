@@ -27,4 +27,23 @@ $("small[data-toggle-show]").click( function(e){
         description.attr('hidden', true);
     }
 });
+
+$("td[data-toggle-actions]").click( function(e){
+  menu = $("#" + $(this).data("toggle-actions"))
+
+  if (menu.hasClass("show")) {
+    $(this).removeClass("active")
+    menu.removeClass("show")
+  } else {
+    $(this).addClass("active")
+    menu.addClass("show")
+  }
+});
+
+$(window).click( function(e){
+  if (!e.target.matches(".nomination-actions")) {
+    $(".active").removeClass("active")
+    $(".show").removeClass("show");
+  }
+})
 </script>
