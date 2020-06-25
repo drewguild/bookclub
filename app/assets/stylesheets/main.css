@@ -61,6 +61,54 @@ table{
     vertical-align: top;
 }
 
+.nomination-actions{
+  position: relative;
+}
+
+.nomination-actions:after {
+  content:'\2807';
+  font-size: 24px;
+}
+
+
+.nomination-actions:hover {
+  background: rgba(211, 211, 211, 0.15);
+}
+
+.active {
+  background: rgba(211, 211, 211, 0.15);
+}
+
+.nomination-actions ul {
+  padding-left: 0em;
+  
+}
+
+.nomination-actions li{
+  padding-bottom: 1em;
+  list-style: none;
+}
+
+.nomination-actions a {
+  color: black;
+  text-decoration: none;
+}
+
+.nomination-actions-dropdown {
+  display: none;
+  position: absolute;
+  left: -150px;
+  z-index: 1;
+
+  background: white;
+  border: solid;
+}
+
+
+.show{
+  display: block;
+}
+
 .form-alert{
     color: maroon;
 }
