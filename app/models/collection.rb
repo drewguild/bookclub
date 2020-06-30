@@ -6,7 +6,8 @@ class Collection < ActiveRecord::Base
 
   module Types
     READ = "READ"
+    TO_READ = "TO_READ"
 
-    ALL = [READ]
+    ALL = [READ, TO_READ]
   end
 end

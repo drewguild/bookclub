@@ -1,7 +1,8 @@
 <h2><%= @overview.club_name %></h2>
 
 <h3>Members</h3>
-<ul>
+<span id="toggle-members-list">See Members ></span>
+<ul id="members-list" hidden=true>
   <% @overview.members.each do |member| %>
     <li><a href=<%= "/members/#{member.id}" %>><%= member.first_name %></a></li>
   <% end %>
@@ -52,5 +53,17 @@ $(window).click( function(e){
     $(".active").removeClass("active")
     $(".show").removeClass("show");
   }
-})
+}); 
+
+$("#toggle-members-list").click( function(e){
+  list = $("#members-list")
+
+  if(list.attr("hidden")) {
+    $(this).text("Collapse X")
+    list.removeAttr("hidden")
+  } else {
+    $(this).text("See Members >")
+    list.attr("hidden", true)
+  }
+});
 </script>

@@ -1,3 +1,7 @@
 <h2><%= "#{@member.first_name} #{@member.last_name}"%></h2>
 
-<h3>Reading Lists</h3>
+<h3>Reading List</h3>
+
+<h4>To Read</h4>
+<%= link_to("Add a book", new_book_collection_path(@member.to_read_collection.id), class: "pure-button") if @member.is?(@current_member)%>
+<%= render(@member.books_to_read) %>
