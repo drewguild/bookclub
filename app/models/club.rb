@@ -1,7 +1,7 @@
 class Club < ApplicationRecord
     has_many :meetings
     has_many :members
-    has_many :collections
+    has_many :collections, as: :owner
     
     def create_member!(member_name)
       first, last = member_name.split(" ")

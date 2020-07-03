@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200615185102) do
+ActiveRecord::Schema.define(version: 20200624191040) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20200615185102) do
     t.integer "club_id"
     t.string "type"
     t.string "label"
+    t.integer "owner_id"
+    t.string "owner_type"
   end
 
   create_table "meetings", force: :cascade do |t|

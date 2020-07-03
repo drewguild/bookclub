@@ -31,6 +31,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :collections, only: [] do
+    member do
+      get "/new_book" => "collections#new_book"
+      post "/add" => "collections#add"
+    end
+  end
+
+  resources :members, only: [:show] do 
+  end
+
   resources :nominations, only: [:new, :create, :destroy, :index, :update] do
     member do
       delete "/downvote" => "nominations#downvote", as: "downvote"

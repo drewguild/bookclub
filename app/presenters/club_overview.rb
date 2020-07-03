@@ -6,7 +6,7 @@ class ClubOverview
     end
 
     def books
-      club.members.flat_map(&:nominations).map do |nomination|
+      members.flat_map(&:nominations).map do |nomination|
         NominatedBook.new(nomination, nomination.book)
       end
     end
@@ -17,6 +17,10 @@ class ClubOverview
 
     def meetings
       club.upcoming_meetings
+    end
+
+    def members
+      club.members
     end
 
     def next_meeting

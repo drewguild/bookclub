@@ -1,8 +1,4 @@
 class BooksController < ApplicationController
-  def add_read
-
-  end
-
   def completed
     @books = current_club.collections.find_by(type: Collection::Types::READ).books
   end
