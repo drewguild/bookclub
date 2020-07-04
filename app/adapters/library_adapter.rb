@@ -1,7 +1,6 @@
 require 'net/http'
+require 'json'
 
-#TODO: this adapter will be decomposed once interactions with the API take on more shape
-# should separate OpenLibraryAPI specifics from generic interaction stuff
 class String
   def queryize
     downcase.gsub(" ", "+")
@@ -9,8 +8,10 @@ class String
 end
 
 class LibraryAdapter
+  BASE_URL = "https://www.googleapis.com/books/v1/volumes?q="
+
   def search(title, author)
-    url = "https://www.googleapis.com/books/v1/volumes?q=#{(title + ' ' + author).queryize}"
+    url = BASE_URL + "#{(title + ' ' + author).queryize}"
     uri = URI(url)
     response = Net::HTTP.get(uri)
 
