@@ -11,7 +11,7 @@ class LibraryAdapter
   BASE_URL = "https://www.googleapis.com/books/v1/volumes?q="
 
   def search(title, author)
-    url = BASE_URL + "#{(title + ' ' + author).queryize}"
+    url = BASE_URL + query_string(title: title, author: author)
     uri = URI(url)
     response = Net::HTTP.get(uri)
 
@@ -20,9 +20,34 @@ class LibraryAdapter
     DeserializedBook.new(data)
   end
 
+  def search_all(title, author)
+    url = BASE_URL + query_string(title: title, author: author)
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+
+    items = JSON.parse(response)["items"]
+
+    items.map do |item|
+      DeserializedBook.new(item["volumeInfo"])
+    end
+  end
+
+  private
+
+  def query_string(terms)
+    title = terms[:title]
+    author = terms[:author]
+
+    "intitle:#{title} inauthor:#{author}".queryize
+  end
+
   class DeserializedBook
     def initialize(json)
       @data = json
+    end
+    
+    def author
+      @data.dig("authors").first
     end
 
     def description
@@ -31,6 +56,10 @@ class LibraryAdapter
 
     def thumbnail
       @data.dig("imageLinks", "smallThumbnail")
+    end
+
+    def title
+      @data.dig("title")
     end
   end
 end

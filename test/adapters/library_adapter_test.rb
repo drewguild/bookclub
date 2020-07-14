@@ -2,25 +2,29 @@ require "rspec"
 require "./app/adapters/library_adapter"
 
 describe "LibraryAdapter" do
-  describe "search" do 
-
-    def build_stub_response(options = {})
+  def build_stub_response(options = {})
+    items = (options[:count] || 1).times.map do |i|
       {
-        "items" => [
-          "volumeInfo" => {
-            "description" => options[:description] || "",
-            "imageLinks" => {
-              "smallThumbnail" => options[:thumbnail] || ""
-            }
+        "volumeInfo" => {
+          "description" => options[:description] || "",
+          "imageLinks" => {
+            "smallThumbnail" => options[:thumbnail] || ""
           }
-        ]
-      }.to_json
+        }
+      }
     end
+
+    {
+      "items" => items
+    }.to_json
+  end
+
+  describe "search" do 
 
     it "queries the external api" do
       title = "Title"
       author = "Author Name"
-      expected_uri = URI(LibraryAdapter::BASE_URL + "title+author+name")
+      expected_uri = URI(LibraryAdapter::BASE_URL + "intitle:title+inauthor:author+name")
 
       expect(Net::HTTP)
         .to receive(:get)
@@ -69,6 +73,21 @@ describe "LibraryAdapter" do
       result = LibraryAdapter.new.search(title, author)
 
       expect(result.thumbnail).to eq(thumbnail)      
+    end
+  end
+
+  describe "search_all" do
+    it "returns a set of deserialized books" do 
+      count = 3
+      response_items = build_stub_response(count: count)
+      allow(Net::HTTP).to receive(:get).and_return(response_items)
+
+      adapter = LibraryAdapter.new
+      title = "The Great Novel"
+      author = "Writey McWriterson"
+
+      expect(adapter.search_all(title, author).size).to eq(count)
+      expect(adapter.search_all(title, author)).to all( be_a(LibraryAdapter::DeserializedBook) )
     end
   end
 end
