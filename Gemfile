@@ -45,6 +45,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
 
   gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec"
+
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do
