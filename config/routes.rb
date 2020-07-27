@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :book_search, controller: "book_search", only: [:index]
+
   resources :collections, only: [] do
     member do
       get "/new_book" => "collections#new_book"
