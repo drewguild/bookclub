@@ -10,10 +10,15 @@ end
 class LibraryAdapter
   BASE_URL = "https://www.googleapis.com/books/v1/volumes?q="
 
+  attr_reader :http_service
+  def initialize(options = {})
+    @http_service = options[:http_service] || Net::HTTP
+  end
+
   def search(title, author)
     url = BASE_URL + query_string(title: title, author: author)
     uri = URI(url)
-    response = Net::HTTP.get(uri)
+    response = http_service.get(uri)
 
     #WARNING: this first is a simplification. Many results possibly excluded
     data = JSON.parse(response)["items"].first["volumeInfo"]
@@ -47,7 +52,7 @@ class LibraryAdapter
     end
     
     def author
-      @data.dig("authors").first
+      @data.dig("author") || ( @data.dig("authors") || [])[0]
     end
 
     def description

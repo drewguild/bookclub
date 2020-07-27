@@ -1,0 +1,12 @@
+$("#book-search-results").html(`
+  <table>
+  <% @book_search_results.each do |book| %>
+    <tr class="pure-table pure-table-horizontal">
+      <td><%= "#{book.title} by #{book.author}" %></td>
+
+      <% params = { title: book.title, author: book.author } %>
+      <td><%= button_to("Nominate", nominations_path, { remote: true, params: params } ) %></td>
+    </tr>
+  <% end %>
+  </table>
+`)

@@ -1,7 +1,7 @@
-require "rspec"
+require 'test_helper'
 require "./app/adapters/library_adapter"
 
-describe "LibraryAdapter" do
+class LibraryAdapterTest < ActiveSupport::TestCase
   def build_stub_response(options = {})
     items = (options[:count] || 1).times.map do |i|
       {
@@ -19,75 +19,74 @@ describe "LibraryAdapter" do
     }.to_json
   end
 
-  describe "search" do 
+  test ".search queries the external api" do
+    title = "Title"
+    author = "Author Name"
+    expected_uri = URI(LibraryAdapter::BASE_URL + "intitle:title+inauthor:author+name")
 
-    it "queries the external api" do
-      title = "Title"
-      author = "Author Name"
-      expected_uri = URI(LibraryAdapter::BASE_URL + "intitle:title+inauthor:author+name")
+    mock = Minitest::Mock.new
+    mock.expect(:get, build_stub_response, [expected_uri])
 
-      expect(Net::HTTP)
-        .to receive(:get)
-        .with(expected_uri)
-        .and_return(build_stub_response)
+    LibraryAdapter.new(http_service: mock).search(title, author)
+    assert_mock mock
+  end
 
-      LibraryAdapter.new.search(title, author)
-    end
+  test ".search returns a deserialized book" do
+    stub_response = build_stub_response
 
-    it "returns a deserialized book" do
-      stub_response = build_stub_response
+    title = "The Great Novel"
+    author = "Writey McWriterson"
 
-      allow(Net::HTTP).to receive(:get).and_return(stub_response)
-
-      title = "The Great Novel"
-      author = "Writey McWriterson"
+    Net::HTTP.stub :get, stub_response do
      
       result = LibraryAdapter.new.search(title, author)
-
-      expect(result.class).to be(LibraryAdapter::DeserializedBook)
-    end
-
-    it "provides access to the book's description" do
-      description = "A book"
-      stub_response = build_stub_response(description: description)
-
-      allow(Net::HTTP).to receive(:get).and_return(stub_response)
-
-      title = "The Great Novel"
-      author = "Writey McWriterson"
-     
-      result = LibraryAdapter.new.search(title, author)
-
-      expect(result.description).to eq(description)      
-    end
-
-    it "provides access to the book's thumbnail" do
-      thumbnail = "image_url"
-      stub_response = build_stub_response(thumbnail: thumbnail)
-
-      allow(Net::HTTP).to receive(:get).and_return(stub_response)
-
-      title = "The Great Novel"
-      author = "Writey McWriterson"
-     
-      result = LibraryAdapter.new.search(title, author)
-
-      expect(result.thumbnail).to eq(thumbnail)      
+      assert_equal result.class, LibraryAdapter::DeserializedBook
     end
   end
 
-  describe "search_all" do
-    it "returns a set of deserialized books" do 
-      count = 3
-      response_items = build_stub_response(count: count)
-      allow(Net::HTTP).to receive(:get).and_return(response_items)
+  test ".search provides access to the book's description" do
+    description = "A book"
+    stub_response = build_stub_response(description: description)
 
-      adapter = LibraryAdapter.new
-      title = "The Great Novel"
-      author = "Writey McWriterson"
+    title = "The Great Novel"
+    author = "Writey McWriterson"
+    
+    Net::HTTP.stub :get, stub_response do
+      result = LibraryAdapter.new.search(title, author)
 
-      expect(adapter.search_all(title, author).size).to eq(count)
-      expect(adapter.search_all(title, author)).to all( be_a(LibraryAdapter::DeserializedBook) )
+      assert_equal result.description, description      
+    end
+  end
+
+  test ".search provides access to the book's thumbnail" do
+    thumbnail = "image_url"
+    stub_response = build_stub_response(thumbnail: thumbnail)
+
+    title = "The Great Novel"
+    author = "Writey McWriterson"
+
+    Net::HTTP.stub :get, stub_response do
+     
+      result = LibraryAdapter.new.search(title, author)
+
+      assert_equal result.thumbnail, thumbnail      
+    end
+  end
+
+  test ".search_all returns a set of deserialized books" do 
+    count = 3
+    response_items = build_stub_response(count: count)
+
+    adapter = LibraryAdapter.new
+    title = "The Great Novel"
+    author = "Writey McWriterson"
+
+    Net::HTTP.stub :get, response_items do
+      result = adapter.search_all(title, author)
+      assert_equal result.size, count
+      result.each do |r|
+        assert_kind_of LibraryAdapter::DeserializedBook, r
+      end
     end
   end
 end

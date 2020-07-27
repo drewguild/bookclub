@@ -1,8 +1,10 @@
-<h1>Nominate a book!</h1>
-<%= form_with(url: "/nominations", method: "post", class: "pure-form-stacked") do %>
+<h1>Book Search</h1>
+<%= form_with(url: "/book_search", method: "get", class: "pure-form-stacked") do %>
     <%= label_tag(:title, "Title") %>
     <%= text_field_tag(:title) %>
     <%= label_tag(:author, "Author") %>
     <%= text_field_tag(:author) %>
-    <%= submit_tag("Nominate") %>
+    <%= submit_tag("Search") %>
 <% end %>
+
+<div id="book-search-results">
