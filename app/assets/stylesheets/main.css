@@ -178,8 +178,18 @@ table{
   align-items: center;
 }
 
+.center-content-vertical {
+  display: flex;
+  align-items: center;
+}
+
 
 .fill-page {
   height: 100%;
   width: 100%;
+}
+
+.static-height-50 {
+  height: 50px;
+  width: 50px;
 }
