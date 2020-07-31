@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="fill-page">
   <head>
     <title>Bookclub</title>
     <%= csrf_meta_tags %>
@@ -12,8 +12,8 @@
     <%= favicon_link_tag asset_path('favicon-16x16.png') %>
   </head>
 
-  <body>
-    <div class="pure-g">
+  <body class="fill-page">
+    <div class="pure-g fill-page background-grey">
       <div class="pure-u-4-24"></div>
       <div class="pure-u-16-24">
         <%= render partial: "/header_menu" if @current_user %>
