@@ -1,3 +1,14 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital@0;1&display=swap');
+
+a, body, button, label, li, p, span {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Libre Baskerville', serif;
+}
+
 header{
   padding: 0em 1em; 
   position: fixed;
