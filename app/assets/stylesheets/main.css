@@ -135,3 +135,28 @@ table{
 #members-list li {
   padding: 0.5em;
 }
+
+.background-grey {
+  background: slategray
+}
+
+.background-white {
+  background: white;
+}
+
+.padding-2em {
+  padding: 2em;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.fill-page {
+  height: 100%;
+  width: 100%;
+}
