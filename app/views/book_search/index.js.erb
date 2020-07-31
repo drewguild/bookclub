@@ -4,8 +4,15 @@ $("#book-search-results").html(`
     <tr class="pure-table pure-table-horizontal">
       <td><%= "#{book.title} by #{book.author}" %></td>
 
-      <% params = { title: book.title, author: book.author } %>
-      <td><%= button_to("Nominate", nominations_path, { remote: true, params: params } ) %></td>
+      <% action_params = { title: book.title, author: book.author } %>
+      <% collection_params = { collection_type: params[:collection_type], owner_type: params[:owner_type] }%>
+      <td>
+        <% if params[:actions] == "nominate" %>
+          <%= button_to("Nominate", nominations_path, { remote: true, params: action_params } ) %>
+        <% elsif params[:actions] == "add" %>
+          <%= button_to("Add To Reading List", add_collection_path(params[:collection_id]), { remote: true, params: action_params.merge(collection_params) } ) %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </table>

@@ -1,12 +1,19 @@
 <%= link_to("< Back", member_path(@collection.owner_id)) %>
 
 <h1>Add to personal reading list</h1>
-<%= form_with(url: add_collection_path(@collection.id), method: "post", class: "pure-form-stacked") do %>
+
+<%= form_with(url: "/book_search", method: "get", class: "pure-form-stacked") do %>
     <%= label_tag(:title, "Title") %>
     <%= text_field_tag(:title) %>
     <%= label_tag(:author, "Author") %>
     <%= text_field_tag(:author) %>
-    <%= hidden_field(nil, :owner_type, value: Member.name)%>
-    <%= hidden_field(nil, :collection_type, value: Collection::Types::TO_READ)%>
-    <%= submit_tag("Add") %>
+    <%= hidden_field(nil, :actions, value: :add) %>
+    <!-- TODO: this is whack. Forwarding these so SearchController can build response but it
+    feels pretty smelly. Search shouldn't know about collections -->
+    <%= hidden_field(nil, :collection_id, value: @collection.id) %>
+    <%= hidden_field(nil, :collection_type, value: Collection::Types::TO_READ) %>
+    <%= hidden_field(nil, :owner_type, value: Member.name) %>
+    <%= submit_tag("Search") %>
 <% end %>
+
+<div id="book-search-results" />
