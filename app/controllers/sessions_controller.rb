@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   def login
     if current_user
       redirect_to overview_url
+    else
+      render layout: "landing"
     end
-
-    render layout: "landing"
   end
 
   def create
