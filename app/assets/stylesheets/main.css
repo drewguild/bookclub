@@ -33,6 +33,18 @@ header input {
   color: black;
 }
 
+input[type="text"], input[type="password"] {
+  width:100%;
+
+  font-size: 24px;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  background: lightgrey;
+}
+
 
 #content {
   margin-top: 60px;
