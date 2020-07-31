@@ -1,9 +1,14 @@
-<h1>Login</h1>
+<div class="background-white padding-2em center-content">
+  <span class="center-content-vertical">
+    <img class="static-height-50" src=<%= image_path("books.png") %> />
+    <h1 class="">Bookclub</h1>
+    <img class="static-height-50" src=<%= image_path("books.png") %> />
+  </span>
+  <h2 class="">Welcome</h2>
 
-<%= form_with(url: "/sessions", method: "post", class: "pure-form-stacked") do %>
-    <%= label_tag(:username, "Username") %>
-    <%= text_field_tag(:username) %>
-    <%= label_tag(:password, "Password: ") %>
-    <%= password_field_tag(:password) %>
+  <%= form_with(url: "/sessions", method: "post", class: "pure-form-stacked") do %>
+    <%= text_field_tag(:username, "", { placeholder: "Username" }) %>
+    <%= password_field_tag(:password, "", { placeholder: "Password" }) %>
     <%= submit_tag("Login") %>
-<% end %>
+  <% end %>
+</div>

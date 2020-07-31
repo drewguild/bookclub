@@ -1,3 +1,14 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital@0;1&display=swap');
+
+a, body, button, label, li, p, span {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Libre Baskerville', serif;
+}
+
 header{
   padding: 0em 1em; 
   position: fixed;
@@ -20,6 +31,18 @@ header a{
 
 header input {
   color: black;
+}
+
+input[type="text"], input[type="password"] {
+  width:100%;
+
+  font-size: 24px;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  background: lightgrey;
 }
 
 
@@ -134,4 +157,39 @@ table{
 
 #members-list li {
   padding: 0.5em;
+}
+
+.background-grey {
+  background: slategray
+}
+
+.background-white {
+  background: white;
+}
+
+.padding-2em {
+  padding: 2em;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-content-vertical {
+  display: flex;
+  align-items: center;
+}
+
+
+.fill-page {
+  height: 100%;
+  width: 100%;
+}
+
+.static-height-50 {
+  height: 50px;
+  width: 50px;
 }

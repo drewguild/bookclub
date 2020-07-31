@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="fill-page">
+  <head>
+    <title>Bookclub</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/84c3412e64.js" crossorigin="anonymous"></script> 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- from favicon.io -->
+    <%= favicon_link_tag asset_path('favicon-16x16.png') %>
+  </head>
+
+  <body class="fill-page">
+    <div class="pure-g fill-page background-grey">
+      <div class="pure-u-4-24"></div>
+      <div class="pure-u-16-24">
+        <%= render partial: "/header_menu" if @current_user %>
+        <div id="content">
+          <%= yield %>
+         </div>
+      </div>
+      <div class="pure-u-4-24"></div>
+    </div>
+  </body>
+
+  <!-- TODO: atttributions in footer -->
+  <!-- Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
+</html>
