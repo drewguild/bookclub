@@ -21,7 +21,10 @@
 <table id="nominated-books", class="pure-table-horizontal">
     <%= render(@overview.books) %>
 </table>
-<%= link_to("Nominate a new book", new_nomination_path, class: "pure-button") %>
+<%= link_to("Nominate a new book",
+      new_nomination_path,
+      class: "pure-button"
+    ) if @overview.member_can_nominate? %>
 
 <script>
 $("small[data-toggle-show]").click( function(e){
@@ -53,7 +56,7 @@ $(window).click( function(e){
     $(".active").removeClass("active")
     $(".show").removeClass("show");
   }
-}); 
+});
 
 $("#toggle-members-list").click( function(e){
   list = $("#members-list")
