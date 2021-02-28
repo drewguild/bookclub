@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   def create
-    unless meeting_param[:book_id].present? && meeting_param[:held_on].present?
+    unless meeting_param[:held_on].present?
       redirect_to meetings_new_path, { flash: { error: "Please include all fields" } } and return
     end
 
@@ -33,7 +33,7 @@ class MeetingsController < ApplicationController
   def book_options
     NominationsQuery.new.all.map do |book|
       [book.title, book.id]
-    end
+    end.append([NullBook.new.title, nil])
   end
 
   def meeting_param

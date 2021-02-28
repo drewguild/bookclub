@@ -1,8 +1,9 @@
 class ClubOverview
-    attr_reader :club
+    attr_reader :club, :member
 
-    def initialize(club)
+    def initialize(club, member)
         @club = club
+        @member = member
     end
 
     def books
@@ -21,6 +22,10 @@ class ClubOverview
 
     def members
       club.members
+    end
+
+    def member_can_nominate?
+      !member.nominations.any?
     end
 
     def next_meeting
